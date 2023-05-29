@@ -11,6 +11,20 @@ document.getElementById("urlForm").addEventListener("submit", function(event) {
   
   // Display the root URL to the user
   document.getElementById("rootUrl").textContent = rootUrl;
+  
+  // Construct the complete URL with the text input
+  var completeUrl = rootUrl + "?textinput=" + encodeURIComponent(textInput);
+  
+  // Retrieve the text from the complete URL
+  fetch(completeUrl)
+    .then(response => response.text())
+    .then(data => {
+      // Display the retrieved text on the webpage
+      document.getElementById("retrievedText").textContent = data;
+    })
+    .catch(error => {
+      console.error("Error retrieving text:", error);
+    });
 });
 
 // Function to generate a random root URL
