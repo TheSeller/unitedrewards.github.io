@@ -1,0 +1,9 @@
+#text-container {
+  text-align: center;
+  margin-top: 200px;
+}
+
+#displayed-text {
+  font-size: 36px;
+  color: #333;
+}
