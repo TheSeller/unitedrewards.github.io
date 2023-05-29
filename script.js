@@ -15,16 +15,11 @@ document.getElementById("urlForm").addEventListener("submit", function(event) {
   // Construct the complete URL with the text input
   var completeUrl = rootUrl + "?textinput=" + encodeURIComponent(textInput);
   
-  // Retrieve the text from the complete URL
-  fetch(completeUrl)
-    .then(response => response.text())
-    .then(data => {
-      // Display the retrieved text on the webpage
-      document.getElementById("retrievedText").textContent = data;
-    })
-    .catch(error => {
-      console.error("Error retrieving text:", error);
-    });
+  // Display the retrieved text on the webpage
+  document.getElementById("retrievedText").textContent = textInput;
+  
+  // Clear the text input field
+  document.getElementById("textInput").value = "";
 });
 
 // Function to generate a random root URL
