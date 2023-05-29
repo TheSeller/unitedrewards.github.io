@@ -15,8 +15,8 @@ document.getElementById("urlForm").addEventListener("submit", function(event) {
   // Construct the complete URL with the text input
   var completeUrl = rootUrl + "?textinput=" + encodeURIComponent(textInput);
   
-  // Display the retrieved text on the webpage
-  document.getElementById("retrievedText").textContent = textInput;
+  // Retrieve the text from the server
+  fetchText(completeUrl);
   
   // Clear the text input field
   document.getElementById("textInput").value = "";
@@ -34,4 +34,17 @@ function generateRootUrl() {
   }
   
   return rootUrl;
+}
+
+// Function to fetch the text from the server
+function fetchText(url) {
+  fetch(url)
+    .then(response => response.text())
+    .then(data => {
+      // Display the retrieved text on the webpage
+      document.getElementById("retrievedText").textContent = data;
+    })
+    .catch(error => {
+      console.error("Error retrieving text:", error);
+    });
 }
